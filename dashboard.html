@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | SmartExpense</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💸</text></svg>">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script>
+        (function () {
+            var t = localStorage.getItem("smartExpenseTheme");
+            if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        })();
+    </script>
+</head>
+<body>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="dashboard.html" class="brand">
+        <div class="logo">₹</div>
+        SmartExpense
+    </a>
+    <div class="nav-links">
+        <a href="dashboard.html" class="active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Dashboard
+        </a>
+        <a href="budget.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+            Budget
+        </a>
+        <a href="transactions.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            Transactions
+        </a>
+        <a href="analytics.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            Analytics
+        </a>
+    </div>
+    <div class="profile-area">
+        <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+            <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <div class="avatar" id="userAvatar">
+            U
+        </div>
+        <div class="profile-meta">
+            <span class="profile-name" id="userName">User</span>
+            <small id="userGreetingSmall">Welcome back</small>
+        </div>
+        <button class="logout" id="logoutBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Logout
+        </button>
+    </div>
+</nav>
+<!-- DASHBOARD -->
+<main class="dashboard">
+    <section class="hero">
+        <h1>
+            <span id="greetingWord">Welcome back</span>, <span id="welcomeName">User</span> 👋
+        </h1>
+        <p>
+            Here's your financial overview.
+        </p>
+    </section>
+    <!-- STAT CARDS -->
+    <section class="stats">
+        <div class="card">
+            <div class="card-top">
+                <p>Total Income</p>
+                <span class="card-icon income-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                </span>
+            </div>
+            <h2 class="income" id="totalIncome">
+                ₹0
+            </h2>
+        </div>
+        <div class="card">
+            <div class="card-top">
+                <p>Total Expenses</p>
+                <span class="card-icon expense-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                </span>
+            </div>
+            <h2 class="expense" id="totalExpense">
+                ₹0
+            </h2>
+        </div
+        <div class="card">
+            <div class="card-top">
+                <p>Balance</p>
+                <span class="card-icon balance-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                </span>
+            </div>
+            <h2 class="balance" id="totalBalance">
+                ₹0
+            </h2>
+        </div>
+        <div class="card">
+            <div class="card-top">
+                <p>Transactions</p>
+                <span class="card-icon count-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                </span>
+            </div>
+            <h2 id="transactionCount">
+                0
+            </h2>
+        </div>
+    </section>
+    <!-- MAIN CONTENT -->
+    <section class="main-grid">
+        <!-- ADD TRANSACTION -->
+        <div class="panel">
+            <div class="panel-header">
+                <div>
+                    <h2>Add Transaction</h2>
+                    <p>
+                        Record your income or expense
+                    </p>
+                </div>
+            </div>
+            <form id="transactionForm">
+                <div class="transaction-toggle">
+                    <label class="toggle-option">
+                        <input
+                            type="radio"
+                            name="type"
+                            value="income"
+                            checked
+                        >
+                        <span>Income</span>
+                    </label>
+                    <label class="toggle-option">
+                        <input
+                            type="radio"
+                            name="type"
+                            value="expense"
+                        >
+                        <span>Expense</span>
+                    </label>
+                </div>
+                <div class="form-grid">
+                    <div>
+                        <label>Amount</label>
+                        <input
+                            type="number"
+                            id="amount"
+                            placeholder="₹0"
+                            min="0.01"
+                            step="0.01"
+                            required
+                        >
+                    </div>
+                    <div>
+                        <label>Category</label>
+                        <select id="category" required>
+                            <option value="">
+                                Select
+                            </option>
+                            <option>Food</option>
+                            <option>Travel</option>
+                            <option>Shopping</option>
+                            <option>Bills</option>
+                            <option>Education</option>
+                            <option>Salary</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label>Description</label>
+                    <input
+                        type="text"
+                        id="description"
+                        placeholder="Example: Lunch"
+                        required
+                    >
+                </div>
+                <div>
+                    <label>Date</label>
+                    <input
+                        type="date"
+                        id="date"
+                        required
+                    >
+                </div>
+                <button type="submit" class="btn" style="width:100%; margin-top:4px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    Add Transaction
+                </button>
+            </form>
+        </div>
+        <!-- RECENT -->
+        <div class="panel">
+            <div class="panel-header">
+                <div>
+                    <h2>Recent Transactions</h2>
+                    <p>
+                        Your latest activity
+                    </p>
+                </div>
+                <a href="transactions.html" class="view-all">
+                    View All
+                </a>
+            </div>
+            <div
+                class="recent-list"
+                id="recentTransactions"
+            >
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                    <strong>No transactions yet</strong>
+                    <span>Add your first one using the form</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    © 2026 SmartExpense — Built for smarter money habits
+</footer>
+<script src="shared.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

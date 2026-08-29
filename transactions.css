@@ -1,0 +1,129 @@
+.transactions {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 0 20px;
+}
+.page-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.page-heading h1 {
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    margin-bottom: 5px;
+}
+.page-heading p {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+.transaction-card {
+    background: var(--surface);
+    padding: 22px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.filters select {
+    margin-bottom: 0;
+    max-width: 170px;
+}
+.search-wrap {
+    position: relative;
+    flex: 1;
+}
+.search-wrap svg {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    color: var(--text-faint);
+}
+.search-wrap input {
+    padding-left: 36px;
+    margin-bottom: 0;
+}
+.table-wrap {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th,
+td {
+    padding: 13px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+    white-space: nowrap;
+}
+th {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+tbody tr:hover {
+    background: var(--surface-alt);
+}
+td.income { color: var(--success); font-weight: 700; }
+td.expense { color: var(--danger); font-weight: 700; }
+.type-pill {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.type-pill.income { background: var(--success-light); color: var(--success); }
+.type-pill.expense { background: var(--danger-light); color: var(--danger); }
+.delete {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border: 0;
+    padding: 7px 10px;
+    border-radius: 7px;
+    color: var(--danger);
+    background: var(--danger-light);
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font);
+    transition: filter 0.15s ease;
+}
+.delete:hover { filter: brightness(0.95); }
+.delete svg { width: 12px; height: 12px; }
+.empty-row td {
+    padding: 40px 10px;
+}
+@media (max-width: 700px) {
+    .page-heading {
+        flex-direction: column;
+    }
+    .filters {
+        flex-direction: column;
+    }
+    .filters select {
+        max-width: none;
+    }
+    .transaction-card {
+        overflow-x: auto;
+    }
+    table {
+        min-width: 650px;
+    }
+}
